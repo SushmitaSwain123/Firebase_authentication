@@ -1,0 +1,28 @@
+<!-- authapp/templates/profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+    <h1>Profile</h1>
+    <div id="user-profile">
+        <!-- Display user profile information here -->
+    </div>
+    <script>
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                // User is signed in, display profile information
+                // You can access user details like user.email, user.displayName, etc.
+                document.getElementById('user-profile').innerHTML = `
+                    <p>Email: ${user.email}</p>
+                    <p>Name: ${user.displayName}</p>
+                `;
+            } else {
+                // User is signed out, handle accordingly
+            }
+        });
+    </script>
+</body>
+</html>
